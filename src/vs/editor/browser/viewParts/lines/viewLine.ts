@@ -57,6 +57,7 @@ export class ViewLineOptions {
 	public readonly lineHeight: number;
 	public readonly stopRenderingLineAfter: number;
 	public readonly fontLigatures: string;
+	public readonly transform: string;
 
 	constructor(config: IEditorConfiguration, themeType: ColorScheme) {
 		this.themeType = themeType;
@@ -81,6 +82,7 @@ export class ViewLineOptions {
 		this.lineHeight = options.get(EditorOption.lineHeight);
 		this.stopRenderingLineAfter = options.get(EditorOption.stopRenderingLineAfter);
 		this.fontLigatures = options.get(EditorOption.fontLigatures);
+		this.transform = options.get(EditorOption.transform) || null;
 	}
 
 	public equals(other: ViewLineOptions): boolean {
@@ -211,7 +213,8 @@ export class ViewLine implements IVisibleLine {
 			options.renderWhitespace,
 			options.renderControlCharacters,
 			options.fontLigatures !== EditorFontLigatures.OFF,
-			selectionsOnLine
+			selectionsOnLine,
+			options.transform
 		);
 
 		if (this._renderedViewLine && this._renderedViewLine.input.equals(renderLineInput)) {

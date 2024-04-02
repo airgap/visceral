@@ -44,6 +44,8 @@ export class LineRange {
 
 export class RenderLineInput {
 
+	public readonly transform: string | null;
+
 	public readonly useMonospaceOptimizations: boolean;
 	public readonly canUseHalfwidthRightwardsArrow: boolean;
 	public readonly lineContent: string;
@@ -88,7 +90,8 @@ export class RenderLineInput {
 		renderWhitespace: 'none' | 'boundary' | 'selection' | 'trailing' | 'all',
 		renderControlCharacters: boolean,
 		fontLigatures: boolean,
-		selectionsOnLine: LineRange[] | null
+		selectionsOnLine: LineRange[] | null,
+		transform: string | null = null
 	) {
 		this.useMonospaceOptimizations = useMonospaceOptimizations;
 		this.canUseHalfwidthRightwardsArrow = canUseHalfwidthRightwardsArrow;
@@ -127,6 +130,7 @@ export class RenderLineInput {
 			this.renderSpaceWidth = middotWidth;
 			this.renderSpaceCharCode = 0xB7; // U+00B7 - MIDDLE DOT
 		}
+		this.transform = transform;
 	}
 
 	private sameSelection(otherSelections: LineRange[] | null): boolean {
@@ -354,7 +358,7 @@ export function renderViewLine(input: RenderLineInput, sb: StringBuilder): Rende
 
 		if (input.lineDecorations.length > 0) {
 			// This line is empty, but it contains inline decorations
-			sb.appendString(`<span>`);
+			sb.appendString(`<span${input.transform ? ` style="transform:${input.transform}"` : ''}>`);
 
 			let beforeCount = 0;
 			let afterCount = 0;

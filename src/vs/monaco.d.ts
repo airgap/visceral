@@ -4986,7 +4986,8 @@ declare namespace monaco.editor {
 		wrappingInfo = 146,
 		defaultColorDecorators = 147,
 		colorDecoratorsActivatedOn = 148,
-		inlineCompletionsAccessibilityVerbose = 149
+		inlineCompletionsAccessibilityVerbose = 149,
+		transform = 150
 	}
 
 	export const EditorOptions: {
@@ -5119,6 +5120,11 @@ declare namespace monaco.editor {
 		suggestSelection: IEditorOption<EditorOption.suggestSelection, 'first' | 'recentlyUsed' | 'recentlyUsedByPrefix'>;
 		tabCompletion: IEditorOption<EditorOption.tabCompletion, 'on' | 'off' | 'onlySnippets'>;
 		tabIndex: IEditorOption<EditorOption.tabIndex, number>;
+		transform: {
+			type: string;
+			default: any;
+			description: any;
+		};
 		unicodeHighlight: IEditorOption<EditorOption.unicodeHighlighting, any>;
 		unusualLineTerminators: IEditorOption<EditorOption.unusualLineTerminators, 'auto' | 'off' | 'prompt'>;
 		useShadowDOM: IEditorOption<EditorOption.useShadowDOM, boolean>;
