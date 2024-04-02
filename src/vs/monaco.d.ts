@@ -3787,6 +3787,10 @@ declare namespace monaco.editor {
 		 * Controls whether the accessibility hint should be provided to screen reader users when an inline completion is shown.
 		 */
 		inlineCompletionsAccessibilityVerbose?: boolean;
+		/**
+		 * Ah?
+		 */
+		transform?: string;
 	}
 
 	export interface IDiffEditorBaseOptions {
@@ -5120,11 +5124,7 @@ declare namespace monaco.editor {
 		suggestSelection: IEditorOption<EditorOption.suggestSelection, 'first' | 'recentlyUsed' | 'recentlyUsedByPrefix'>;
 		tabCompletion: IEditorOption<EditorOption.tabCompletion, 'on' | 'off' | 'onlySnippets'>;
 		tabIndex: IEditorOption<EditorOption.tabIndex, number>;
-		transform: {
-			type: string;
-			default: any;
-			description: any;
-		};
+		transform: IEditorOption<EditorOption.transform, string>;
 		unicodeHighlight: IEditorOption<EditorOption.unicodeHighlighting, any>;
 		unusualLineTerminators: IEditorOption<EditorOption.unusualLineTerminators, 'auto' | 'off' | 'prompt'>;
 		useShadowDOM: IEditorOption<EditorOption.useShadowDOM, boolean>;

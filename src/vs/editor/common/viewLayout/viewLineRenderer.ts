@@ -44,7 +44,6 @@ export class LineRange {
 
 export class RenderLineInput {
 
-	public readonly transform: string | null;
 
 	public readonly useMonospaceOptimizations: boolean;
 	public readonly canUseHalfwidthRightwardsArrow: boolean;
@@ -64,6 +63,7 @@ export class RenderLineInput {
 	public readonly renderWhitespace: RenderWhitespace;
 	public readonly renderControlCharacters: boolean;
 	public readonly fontLigatures: boolean;
+	public readonly transform: string | null;
 
 	/**
 	 * Defined only when renderWhitespace is 'selection'. Selections are non-overlapping,
@@ -358,7 +358,7 @@ export function renderViewLine(input: RenderLineInput, sb: StringBuilder): Rende
 
 		if (input.lineDecorations.length > 0) {
 			// This line is empty, but it contains inline decorations
-			sb.appendString(`<span${input.transform ? ` style="transform:${input.transform}"` : ''}>`);
+			sb.appendString('<span' + (input.transform ? ` style="transform:${input.transform}"` : '') + '>');
 
 			let beforeCount = 0;
 			let afterCount = 0;

@@ -82,7 +82,7 @@ export class ViewLineOptions {
 		this.lineHeight = options.get(EditorOption.lineHeight);
 		this.stopRenderingLineAfter = options.get(EditorOption.stopRenderingLineAfter);
 		this.fontLigatures = options.get(EditorOption.fontLigatures);
-		this.transform = options.get(EditorOption.transform) || null;
+		this.transform = options.get(EditorOption.transform);
 	}
 
 	public equals(other: ViewLineOptions): boolean {

@@ -750,6 +750,11 @@ export interface IEditorOptions {
 	 * Controls whether the accessibility hint should be provided to screen reader users when an inline completion is shown.
 	 */
 	inlineCompletionsAccessibilityVerbose?: boolean;
+
+	/**
+	 * Ah?
+	 */
+	transform?: string;
 }
 
 /**
@@ -6071,11 +6076,11 @@ export const EditorOptions = {
 		EditorOption.tabIndex, 'tabIndex',
 		0, -1, Constants.MAX_SAFE_SMALL_INTEGER
 	)),
-	transform: {
-		type: 'string',
-		default: null,
+	transform: register(new EditorStringOption(EditorOption.transform, 'transform', '', {
+		// type: 'string',
+		// default: null,
 		description: nls.localize('transform', 'CSS transform for your bitchass')
-	},
+	})),
 	unicodeHighlight: register(new UnicodeHighlight()),
 	unusualLineTerminators: register(new EditorStringEnumOption(
 		EditorOption.unusualLineTerminators, 'unusualLineTerminators',
